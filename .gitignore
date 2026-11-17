@@ -1,0 +1,22 @@
+# Dependencies & build output
+node_modules/
+dist/
+.vite/
+npm-debug.log*
+
+# Test coverage reports (generated)
+coverage/
+
+# GitNexus local index (also self-ignored via .gitnexus/.gitignore)
+.gitnexus/
+
+# Env / editor / OS
+.env
+.env.local
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Local-only Claude settings (project skills under .claude/skills ARE tracked)
+.claude/settings.local.json
