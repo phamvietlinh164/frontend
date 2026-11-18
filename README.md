@@ -90,9 +90,10 @@ S3) — see [`ARCHITECTURE.md`](ARCHITECTURE.md#deployment-topology).
 src/
 ├── components/        # tree, details, search, upload, import results, badges
 ├── lib/               # typed API client (api.ts) + tree-state hook (useAssetTree.ts)
+├── pages/             # route-level pages (ExplorerPage.tsx composes the layout)
 ├── test/              # Vitest setup + typed fixtures (factories)
 ├── types.ts           # shared types mirroring the backend JSON shapes
-└── ExplorerPage.tsx   # page that composes everything; routing in App.tsx
+└── App.tsx            # router; renders ExplorerPage for the routes
 ```
 
 See [`CLAUDE.md`](CLAUDE.md) for repository conventions and the definition of done.

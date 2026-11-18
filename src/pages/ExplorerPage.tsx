@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { AssetTree } from './components/AssetTree';
-import { AssetDetails } from './components/AssetDetails';
-import { SearchBar } from './components/SearchBar';
-import { UploadPanel } from './components/UploadPanel';
-import { ImportResults } from './components/ImportResults';
-import { useAssetTree } from './lib/useAssetTree';
-import type { ImportResult } from './types';
+import { AssetTree } from '../components/AssetTree';
+import { AssetDetails } from '../components/AssetDetails';
+import { SearchBar } from '../components/SearchBar';
+import { UploadPanel } from '../components/UploadPanel';
+import { ImportResults } from '../components/ImportResults';
+import { useAssetTree } from '../lib/useAssetTree';
+import type { ImportResult } from '../types';
 
 // ExplorerPage ties the sidebar tree, search, upload and details pane together.
 // The selected asset lives entirely in the URL (/assets/:assetId), so deep

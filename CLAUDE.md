@@ -13,7 +13,7 @@ lives in a **separate repository** (`../backend`). The app talks only to `/api`.
 - `src/types.ts` — shared types; must mirror the backend JSON shapes.
 - `src/components/` — small reusable pieces: `AssetTree`, `AssetDetails`,
   `SearchBar`, `UploadPanel`, `ImportResults`, `Badges`.
-- `src/ExplorerPage.tsx` — composes the layout; selected asset is URL state
+- `src/pages/ExplorerPage.tsx` — composes the layout; selected asset is URL state
   (`/assets/:assetId`) so refresh/deep-links work.
 
 ## Commands

@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { ExplorerPage } from './ExplorerPage';
+import { ExplorerPage } from './pages/ExplorerPage';
 
 // The same page renders for the root and for a selected asset; the asset id is
 // a stable route param so refresh and direct navigation keep the selection.
