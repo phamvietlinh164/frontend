@@ -74,7 +74,6 @@ function TreeNode({ asset, depth, tree, selectedId, onSelect }: TreeNodeProps) {
         )}
         <TypeBadge type={asset.asset_type} />
         <span className="tree-name">{asset.asset_name}</span>
-        <span className="tree-id">{asset.asset_id}</span>
       </div>
 
       {expandable && isExpanded && (

@@ -161,14 +161,21 @@ button {
 .twisty {
   border: none;
   background: none;
-  width: 18px;
-  height: 18px;
-  font-size: 11px;
+  width: 26px;
+  height: 26px;
+  font-size: 15px;
   color: var(--muted);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.twisty:not(.placeholder):hover {
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 
 .twisty.placeholder {
@@ -180,13 +187,6 @@ button {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.tree-id {
-  color: var(--muted);
-  font-size: 12px;
-  margin-left: auto;
-  font-variant-numeric: tabular-nums;
 }
 
 .tree-state {
@@ -210,6 +210,19 @@ button {
   color: var(--accent);
   font-size: 15px;
   padding: 2px 6px;
+  cursor: pointer;
+}
+
+/* Reload button in the hierarchy header: larger, comfortable tap target. */
+.sidebar-header .link-btn {
+  font-size: 22px;
+  line-height: 1;
+  padding: 4px 9px;
+  border-radius: 6px;
+}
+
+.sidebar-header .link-btn:hover {
+  background: var(--accent-soft);
 }
 
 /* ---------- Badges ---------- */
