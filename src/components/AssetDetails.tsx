@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react';
 import { api } from '../lib/api';
-import type { Asset, AssetDetail, AssetType } from '../types';
-import { ASSET_TYPE_LABELS } from '../types';
+import type { Asset, AssetDetail } from '../types';
+import { ASSET_TYPE_LABELS, DESCENDANT_TYPE_ORDER } from '../types';
 import { StatusBadge, TypeBadge } from './Badges';
-
-const CHILD_ORDER: AssetType[] = ['TRANSFORMER', 'LV_BOARD', 'SWITCHBOARD', 'SWITCHBOARD_PANEL'];
-const COUNT_ORDER: AssetType[] = ['TRANSFORMER', 'LV_BOARD', 'SWITCHBOARD', 'SWITCHBOARD_PANEL'];
 
 interface Props {
   assetId: string | undefined;
@@ -69,7 +66,7 @@ export function AssetDetails({ assetId, onSelect }: Props) {
     return <div className="details state">Asset not found.</div>;
   }
 
-  const groups = CHILD_ORDER.map((type) => ({
+  const groups = DESCENDANT_TYPE_ORDER.map((type) => ({
     type,
     items: children.filter((c) => c.asset_type === type),
   })).filter((g) => g.items.length > 0);
@@ -101,7 +98,7 @@ export function AssetDetails({ assetId, onSelect }: Props) {
       <section className="counts">
         <h3>Descendants ({detail.total_descendants})</h3>
         <div className="count-row">
-          {COUNT_ORDER.map((type) => (
+          {DESCENDANT_TYPE_ORDER.map((type) => (
             <div className="count-pill" key={type}>
               <span className="count-value">{detail.descendant_counts[type] ?? 0}</span>
               <span className="count-label">{ASSET_TYPE_LABELS[type]}s</span>

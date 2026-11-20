@@ -40,9 +40,31 @@ export interface ImportResult {
   rejections: Rejection[];
 }
 
-// Only these types can have children in the permitted hierarchy, so the tree
-// only shows an expander for them.
-export const EXPANDABLE_TYPES: AssetType[] = ['SUBSTATION', 'SWITCHBOARD'];
+// The permitted parent type for each asset type, mirroring the backend domain
+// rules. Single source of truth for the hierarchy on the frontend: the constants
+// below are derived from it so they can never drift apart.
+export const PERMITTED_PARENT: Record<AssetType, AssetType | null> = {
+  SUBSTATION: null,
+  TRANSFORMER: 'SUBSTATION',
+  LV_BOARD: 'SUBSTATION',
+  SWITCHBOARD: 'SUBSTATION',
+  SWITCHBOARD_PANEL: 'SWITCHBOARD',
+};
+
+// Types that can have children (i.e. appear as a permitted parent), derived from
+// PERMITTED_PARENT so the tree only shows an expander where children are possible.
+export const EXPANDABLE_TYPES: AssetType[] = Array.from(
+  new Set(Object.values(PERMITTED_PARENT).filter((p): p is AssetType => p !== null)),
+);
+
+// Non-root asset types in display order, used both for grouping immediate
+// children and for ordering the descendant-count pills.
+export const DESCENDANT_TYPE_ORDER: AssetType[] = [
+  'TRANSFORMER',
+  'LV_BOARD',
+  'SWITCHBOARD',
+  'SWITCHBOARD_PANEL',
+];
 
 export const ASSET_TYPE_LABELS: Record<AssetType, string> = {
   SUBSTATION: 'Substation',

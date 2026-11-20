@@ -29,19 +29,31 @@ export function SearchBar({ onSelect }: Props) {
       setOpen(false);
       return;
     }
+    // Guard against stale responses: if the query changes (or the component
+    // unmounts) before an in-flight search resolves, ignore its result so an
+    // older request can never overwrite a newer one.
+    let cancelled = false;
     const handle = setTimeout(() => {
       setLoading(true);
       setError(null);
       api
         .search(q.trim(), type)
         .then((r) => {
+          if (cancelled) return;
           setResults(r);
           setOpen(true);
         })
-        .catch((e) => setError(e.message ?? 'Search failed'))
-        .finally(() => setLoading(false));
+        .catch((e) => {
+          if (!cancelled) setError(e.message ?? 'Search failed');
+        })
+        .finally(() => {
+          if (!cancelled) setLoading(false);
+        });
     }, 250);
-    return () => clearTimeout(handle);
+    return () => {
+      cancelled = true;
+      clearTimeout(handle);
+    };
   }, [q, type]);
 
   // Close the dropdown when clicking outside.
