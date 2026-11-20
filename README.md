@@ -22,8 +22,9 @@ The frontend runs locally with Vite's dev server. It needs the backend reachable
 on `:8080` — start that first from the parent folder:
 
 ```bash
-# 1. db + backend (from the repository's parent folder)
-cd .. && docker compose up --build          # API on :8080
+# 1. db + backend
+cd ..                                        # repository's parent folder (has docker-compose.yml)
+docker compose up --build                    # API on :8080
 
 # 2. frontend dev server (in this folder, another terminal)
 npm install
